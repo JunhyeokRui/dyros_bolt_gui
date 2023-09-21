@@ -1,0 +1,17 @@
+<library path="libdyros_gui">
+  <class name="dyros_gui/RqtDyrosPlugin" type="dyros_gui::RqtDyrosPlugin" base_class_type="rqt_gui_cpp::Plugin">
+    <description>
+      An example Python GUI plugin to create a great user interface.
+    </description>
+    <qtgui>
+      <!-- optional grouping...
+      <group>
+        <label>Subgroup</label>
+      </group>
+      -->
+      <label>DYROS Gui</label>
+      <!--icon type="file">resource/Dyros_Logo3.png</icon-->
+      <statustip>Great user interface to provide real value.</statustip>
+    </qtgui>
+  </class>
+</library>
