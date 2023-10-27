@@ -2,11 +2,12 @@
 #define dyros_gui__RqtDyrosPlugin_H
 
 #include <rqt_gui_cpp/plugin.h>
-#include <dyros_gui/ui_dyros_gui.h>
+#include <dyros_bolt_gui/ui_dyros_gui.h>
 #include <QWidget>
 #include <std_msgs/Float64.h>
 #include <std_msgs/Bool.h>
 #include <std_msgs/Int16.h>
+#include <std_msgs/Int16MultiArray.h>
 #include <sensor_msgs/JointState.h>
 #include <dyros_bolt_msgs/JointCommand.h>
 #include <iostream>
@@ -28,6 +29,7 @@ public:
     ros::Publisher axis_state_pub;
     ros::Publisher joint_ctrl_pub;
 
+    ros::Subscriber axis_current_state_sub;
     ros::Subscriber joint_state_sub;
     
     std_msgs::Int16 axis_state_msgs;
@@ -37,12 +39,14 @@ public:
 
     void send_joint_ctrl(int id, double q_);
     void jointStateCallback(const sensor_msgs::JointStateConstPtr &msg);
+    void axisStateCallback(const std_msgs::Int16MultiArrayConstPtr &msg);
 
 protected slots:
     virtual void motorcalibutton();
     virtual void encodercalibutton();
     virtual void clbutton();
     virtual void idlebutton();
+    virtual void estopbutton();
     virtual void jointCommandClicked();
     // virtual void tqbutton1();
     // virtual void tqbutton2();

@@ -321,7 +321,7 @@
     </item>
    </layout>
   </widget>
-  <widget class="QPushButton" name="idleButton">
+  <widget class="QPushButton" name="idlestateButton">
    <property name="geometry">
     <rect>
      <x>80</x>
@@ -334,7 +334,7 @@
     <string>Torque Off</string>
    </property>
   </widget>
-  <widget class="QPushButton" name="mcaliButton">
+  <widget class="QPushButton" name="mcalibrationButton">
    <property name="geometry">
     <rect>
      <x>10</x>
