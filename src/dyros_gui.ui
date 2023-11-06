@@ -183,6 +183,9 @@
         <property name="text">
          <string>AxisState</string>
         </property>
+        <property name="alignment">
+         <set>Qt::AlignCenter</set>
+        </property>
        </widget>
       </item>
       <item>
@@ -207,6 +210,9 @@
        <widget class="QLabel" name="jointState_2">
         <property name="text">
          <string>AxisState</string>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignCenter</set>
         </property>
        </widget>
       </item>
@@ -233,6 +239,9 @@
         <property name="text">
          <string>AxisState</string>
         </property>
+        <property name="alignment">
+         <set>Qt::AlignCenter</set>
+        </property>
        </widget>
       </item>
       <item>
@@ -257,6 +266,9 @@
        <widget class="QLabel" name="jointState_4">
         <property name="text">
          <string>AxisState</string>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignCenter</set>
         </property>
        </widget>
       </item>
@@ -283,6 +295,9 @@
         <property name="text">
          <string>AxisState</string>
         </property>
+        <property name="alignment">
+         <set>Qt::AlignCenter</set>
+        </property>
        </widget>
       </item>
       <item>
@@ -307,6 +322,9 @@
        <widget class="QLabel" name="jointState_6">
         <property name="text">
          <string>AxisState</string>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignCenter</set>
         </property>
        </widget>
       </item>

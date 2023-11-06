@@ -27,8 +27,8 @@ void RqtDyrosPlugin::initPlugin(qt_gui_cpp::PluginContext& context)
 
     axis_state_pub = getNodeHandle().advertise<std_msgs::Int16>("/odrv_axis_request_states",10);
     joint_ctrl_pub = getNodeHandle().advertise<dyros_bolt_msgs::JointCommand>("/dyros_bolt/joint_command",10);
-    axis_current_state_sub = getNodeHandle().subscribe("/odrv_axis_current_states", 10, &RqtDyrosPlugin::jointStateCallback, this);
-    joint_state_sub = getNodeHandle().subscribe("/joint_states", 10, &RqtDyrosPlugin::axisStateCallback, this);
+    axis_current_state_sub = getNodeHandle().subscribe("/odrv_axis_current_states", 10, &RqtDyrosPlugin::axisStateCallback, this);
+    joint_state_sub = getNodeHandle().subscribe("/joint_states", 10, &RqtDyrosPlugin::jointStateCallback, this);
 
 
     connect(ui_.idlestateButton,SIGNAL(clicked()),this,SLOT(idlebutton()));
@@ -50,6 +50,13 @@ void RqtDyrosPlugin::initPlugin(qt_gui_cpp::PluginContext& context)
     joint_cmd_msgs.name.resize(8);
     joint_cmd_msgs.position.resize(8);
     joint_cmd_msgs.duration.resize(8);
+
+    jointStates.push_back(ui_.jointState_1);
+    jointStates.push_back(ui_.jointState_2);
+    jointStates.push_back(ui_.jointState_3);
+    jointStates.push_back(ui_.jointState_4);
+    jointStates.push_back(ui_.jointState_5);
+    jointStates.push_back(ui_.jointState_6);
     
     // joint_cmd_msgs.name = jointName;
 }
@@ -143,23 +150,49 @@ void RqtDyrosPlugin::jointStateCallback(const sensor_msgs::JointStateConstPtr &m
 
 void RqtDyrosPlugin::axisStateCallback(const std_msgs::Int16MultiArrayConstPtr &msg)
 {
-    ui_.jointState_1->setStyleSheet("QLabel { background-color : rgb(138, 226, 52) ; color : black; }");
-    ui_.jointState_1->setText(QString::fromUtf8("ON"));
 
-    ui_.jointState_2->setStyleSheet("QLabel { background-color : rgb(138, 226, 52) ; color : black; }");
-    ui_.jointState_2->setText(QString::fromUtf8("ON"));
+    for(int i = 0; i < 6; i++)
+    {
+        switch (msg->data[i])
+        {
+            case 8:
+                // jointStates[i]->setStyleSheet("QLabel { background-color : rgb(138, 226, 52) ; color : black; }");
+                jointStates[i]->setText(QString::fromUtf8("ON"));
+                break;
+            case 0:
+            case 1:
+                // jointStates[i]->setStyleSheet("QLabel { background-color : rgb(239, 41, 41) ; color : black; }");
+                jointStates[i]->setText(QString::fromUtf8("OFF"));
+                break;
+            case 3:
+            case 4:
+            case 7:
+                // jointStates[i]->setStyleSheet("QLabel { background-color : rgb(252, 175, 62) ; color : black; }");
+                jointStates[i]->setText(QString::fromUtf8("CALI"));
+                break;
+            default:
+                // jointStates[i]->setStyleSheet("QLabel { background-color : rgb(239, 41, 41) ; color : black; }");
+                jointStates[i]->setText(QString::fromUtf8("OFF"));
+                break;
+        }
+    }
+    // ui_.jointState_1->setStyleSheet("QLabel { background-color : rgb(138, 226, 52) ; color : black; }");
+    // ui_.jointState_1->setText(QString::fromUtf8("ON"));
+
+    // ui_.jointState_2->setStyleSheet("QLabel { background-color : rgb(138, 226, 52) ; color : black; }");
+    // ui_.jointState_2->setText(QString::fromUtf8("ON"));
    
-    ui_.jointState_3->setStyleSheet("QLabel { background-color : rgb(138, 226, 52) ; color : black; }");
-    ui_.jointState_3->setText(QString::fromUtf8("ON"));
+    // ui_.jointState_3->setStyleSheet("QLabel { background-color : rgb(138, 226, 52) ; color : black; }");
+    // ui_.jointState_3->setText(QString::fromUtf8("ON"));
     
-    ui_.jointState_4->setStyleSheet("QLabel { background-color : rgb(138, 226, 52) ; color : black; }");
-    ui_.jointState_4->setText(QString::fromUtf8("ON")); 
+    // ui_.jointState_4->setStyleSheet("QLabel { background-color : rgb(138, 226, 52) ; color : black; }");
+    // ui_.jointState_4->setText(QString::fromUtf8("ON")); 
     
-    ui_.jointState_5->setStyleSheet("QLabel { background-color : rgb(138, 226, 52) ; color : black; }");
-    ui_.jointState_5->setText(QString::fromUtf8("ON")); 
+    // ui_.jointState_5->setStyleSheet("QLabel { background-color : rgb(138, 226, 52) ; color : black; }");
+    // ui_.jointState_5->setText(QString::fromUtf8("ON")); 
     
-    ui_.jointState_6->setStyleSheet("QLabel { background-color : rgb(138, 226, 52) ; color : black; }");
-    ui_.jointState_6->setText(QString::fromUtf8("ON")); 
+    // ui_.jointState_6->setStyleSheet("QLabel { background-color : rgb(138, 226, 52) ; color : black; }");
+    // ui_.jointState_6->setText(QString::fromUtf8("ON")); 
 }
 
 void RqtDyrosPlugin::shutdownPlugin()

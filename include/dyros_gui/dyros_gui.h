@@ -60,6 +60,7 @@ signals:
 private:
     Ui::DyrosGui ui_;
     QWidget* widget_;
+    std::vector<QLabel*> jointStates;
 };
 }
 
