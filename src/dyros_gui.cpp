@@ -36,6 +36,7 @@ void RqtDyrosPlugin::initPlugin(qt_gui_cpp::PluginContext& context)
     connect(ui_.caliButton,SIGNAL(clicked()),this,SLOT(encodercalibutton()));
     connect(ui_.CLButton,SIGNAL(clicked()),this,SLOT(clbutton()));
     connect(ui_.EstopButton,SIGNAL(clicked()),this,SLOT(estopbutton()));
+    connect(ui_.RebootBT,SIGNAL(clicked()),this,SLOT(rebootbutton()));
     
 
     connect(ui_.jointButton,SIGNAL(clicked()),this,SLOT(jointCommandClicked()));
@@ -46,7 +47,6 @@ void RqtDyrosPlugin::initPlugin(qt_gui_cpp::PluginContext& context)
     connect(ui_.jointButton_6,SIGNAL(clicked()),this,SLOT(jointCommandClicked()));
 
     
-
     joint_cmd_msgs.name.resize(8);
     joint_cmd_msgs.position.resize(8);
     joint_cmd_msgs.duration.resize(8);
@@ -64,6 +64,12 @@ void RqtDyrosPlugin::initPlugin(qt_gui_cpp::PluginContext& context)
 void RqtDyrosPlugin::estopbutton()
 {
     
+}
+
+void RqtDyrosPlugin::rebootbutton()
+{
+    axis_state_msgs.data = 16;
+    axis_state_pub.publish(axis_state_msgs);
 }
 
 void RqtDyrosPlugin::idlebutton()

@@ -47,6 +47,7 @@ protected slots:
     virtual void clbutton();
     virtual void idlebutton();
     virtual void estopbutton();
+    virtual void rebootbutton();
     virtual void jointCommandClicked();
     // virtual void tqbutton1();
     // virtual void tqbutton2();
