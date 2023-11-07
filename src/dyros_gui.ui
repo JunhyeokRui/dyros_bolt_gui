@@ -44,7 +44,7 @@
     <rect>
      <x>330</x>
      <y>130</y>
-     <width>322</width>
+     <width>343</width>
      <height>471</height>
     </rect>
    </property>
@@ -53,6 +53,15 @@
      <layout class="QHBoxLayout" name="horizontalLayout">
       <item>
        <widget class="QDoubleSpinBox" name="doubleSpinBox">
+        <property name="decimals">
+         <number>4</number>
+        </property>
+        <property name="minimum">
+         <double>-10.000000000000000</double>
+        </property>
+        <property name="maximum">
+         <double>10.000000000000000</double>
+        </property>
         <property name="singleStep">
          <double>0.010000000000000</double>
         </property>
@@ -71,6 +80,15 @@
      <layout class="QHBoxLayout" name="horizontalLayout_2">
       <item>
        <widget class="QDoubleSpinBox" name="doubleSpinBox_2">
+        <property name="decimals">
+         <number>4</number>
+        </property>
+        <property name="minimum">
+         <double>-10.000000000000000</double>
+        </property>
+        <property name="maximum">
+         <double>10.000000000000000</double>
+        </property>
         <property name="singleStep">
          <double>0.010000000000000</double>
         </property>
@@ -89,6 +107,15 @@
      <layout class="QHBoxLayout" name="horizontalLayout_3">
       <item>
        <widget class="QDoubleSpinBox" name="doubleSpinBox_3">
+        <property name="decimals">
+         <number>4</number>
+        </property>
+        <property name="minimum">
+         <double>-10.000000000000000</double>
+        </property>
+        <property name="maximum">
+         <double>10.000000000000000</double>
+        </property>
         <property name="singleStep">
          <double>0.010000000000000</double>
         </property>
@@ -107,6 +134,15 @@
      <layout class="QHBoxLayout" name="horizontalLayout_4">
       <item>
        <widget class="QDoubleSpinBox" name="doubleSpinBox_4">
+        <property name="decimals">
+         <number>4</number>
+        </property>
+        <property name="minimum">
+         <double>-10.000000000000000</double>
+        </property>
+        <property name="maximum">
+         <double>10.000000000000000</double>
+        </property>
         <property name="singleStep">
          <double>0.010000000000000</double>
         </property>
@@ -125,6 +161,15 @@
      <layout class="QHBoxLayout" name="horizontalLayout_5">
       <item>
        <widget class="QDoubleSpinBox" name="doubleSpinBox_5">
+        <property name="decimals">
+         <number>4</number>
+        </property>
+        <property name="minimum">
+         <double>-10.000000000000000</double>
+        </property>
+        <property name="maximum">
+         <double>10.000000000000000</double>
+        </property>
         <property name="singleStep">
          <double>0.010000000000000</double>
         </property>
@@ -143,6 +188,15 @@
      <layout class="QHBoxLayout" name="horizontalLayout_6">
       <item>
        <widget class="QDoubleSpinBox" name="doubleSpinBox_6">
+        <property name="decimals">
+         <number>4</number>
+        </property>
+        <property name="minimum">
+         <double>-10.000000000000000</double>
+        </property>
+        <property name="maximum">
+         <double>10.000000000000000</double>
+        </property>
         <property name="singleStep">
          <double>0.010000000000000</double>
         </property>
