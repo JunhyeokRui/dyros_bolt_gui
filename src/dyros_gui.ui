@@ -462,6 +462,19 @@
 Odrive</string>
    </property>
   </widget>
+  <widget class="QPushButton" name="resetEncoderButton">
+   <property name="geometry">
+    <rect>
+     <x>80</x>
+     <y>280</y>
+     <width>160</width>
+     <height>40</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Reset Encoder</string>
+   </property>
+  </widget>
  </widget>
  <resources/>
  <connections/>

@@ -37,6 +37,8 @@ void RqtDyrosPlugin::initPlugin(qt_gui_cpp::PluginContext& context)
     connect(ui_.CLButton,SIGNAL(clicked()),this,SLOT(clbutton()));
     connect(ui_.EstopButton,SIGNAL(clicked()),this,SLOT(estopbutton()));
     connect(ui_.RebootBT,SIGNAL(clicked()),this,SLOT(rebootbutton()));
+    connect(ui_.resetEncoderButton,SIGNAL(clicked()),this,SLOT(encoderbutton()));
+    
     
 
     connect(ui_.jointButton,SIGNAL(clicked()),this,SLOT(jointCommandClicked()));
@@ -64,6 +66,12 @@ void RqtDyrosPlugin::initPlugin(qt_gui_cpp::PluginContext& context)
 void RqtDyrosPlugin::estopbutton()
 {
     
+}
+
+void RqtDyrosPlugin::encoderbutton()
+{
+    axis_state_msgs.data = 19;
+    axis_state_pub.publish(axis_state_msgs);
 }
 
 void RqtDyrosPlugin::rebootbutton()
