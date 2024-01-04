@@ -35,7 +35,7 @@ public:
     std_msgs::Int16 axis_state_msgs;
     dyros_bolt_msgs::JointCommand joint_cmd_msgs;
 
-    const char* jointName[8] = {"left_hip_AA", "left_hip_FE", "left_knee", "left_ankle", "right_hip_AA", "right_hip_FE", "right_knee", "right_ankle"};
+    const char* jointName[8] = {"FL_HAA", "FL_HFE", "FL_KFE", "FL_ANKLE", "FR_HAA", "FR_HFE", "FR_KFE", "FR_ANKLE"};
 
     void send_joint_ctrl(int id, double q_);
     void jointStateCallback(const sensor_msgs::JointStateConstPtr &msg);
