@@ -1,0 +1,8 @@
+<launch>
+    <param name="robot_description" value="$(find dyros_bolt_description)/mujoco_model/bolt_6dof.xml" />
+
+    <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher">
+        <remap from="/joint_states" to="/dyros_bolt/jointstates" />
+    </node>
+    <node name="dyros_bolt_rqt_dashboard" pkg="rqt_gui" type="rqt_gui" respawn="false" output="screen" args="--perspective-file $(find dyros_bolt_gui)/config/dyros_bolt_gui.perspective" />
+</launch>

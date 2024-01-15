@@ -1,5 +1,5 @@
-<library path="libdyros_gui">
-  <class name="dyros_gui/RqtDyrosPlugin" type="dyros_gui::RqtDyrosPlugin" base_class_type="rqt_gui_cpp::Plugin">
+<library path="libdyros_bolt_gui">
+  <class name="dyros_bolt_gui/DyrosBoltGui" type="dyros_bolt_gui::DyrosBoltGui" base_class_type="rqt_gui_cpp::Plugin">
     <description>
       An example Python GUI plugin to create a great user interface.
     </description>
@@ -9,8 +9,8 @@
         <label>Subgroup</label>
       </group>
       -->
-      <label>DYROS Gui</label>
-      <!--icon type="file">resource/Dyros_Logo3.png</icon-->
+      <label>DYROS BOLT Gui</label>
+      <icon type="file">resource/Dyros_Logo3.png</icon>
       <statustip>Great user interface to provide real value.</statustip>
     </qtgui>
   </class>

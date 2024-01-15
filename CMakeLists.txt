@@ -1,63 +1,121 @@
 cmake_minimum_required(VERSION 3.5.0)
-project(dyros_gui)
+project(dyros_bolt_gui)
 
-## Compile as C++11, supported in ROS Kinetic and newer
 add_compile_options(-std=c++11)
 
 ## Find catkin macros and libraries
 ## if COMPONENTS list like find_package(catkin REQUIRED COMPONENTS xyz)
 ## is used, also find other catkin packages
 find_package(catkin REQUIRED COMPONENTS
-  # mujoco_ros_msgs
   roscpp
   rqt_gui
   rqt_gui_cpp
-  std_msgs
   sensor_msgs
-  dyros_bolt_msgs
+  std_msgs
+  geometry_msgs
+  dyros_bolt_msgs  
 )
 
-find_package(Qt5Widgets REQUIRED)
 
 
+if($ENV{ROS_DISTRO} STREQUAL "melodic" OR $ENV{ROS_DISTRO} STREQUAL "noetic")
+  message("Using ROS melodic")
+  find_package(Qt5 REQUIRED Core Widgets X11Extras Gui)
+  ADD_DEFINITIONS(-DCOMPILE_MELODIC)
+elseif($ENV{ROS_DISTRO} STREQUAL "kinetic")
+  message("Using ROS kinetic")
+  find_package(Qt5 REQUIRED Core Widgets)
+  ADD_DEFINITIONS(-DCOMPILE_KINETIC)
+else()
+  message("Unknown ROS distro:")
+  message($ENV{ROS_DISTRO})
+endif()
+
+set(CMAKE_AUTOMOC ON)
 catkin_python_setup()
 
 catkin_package(
-# INCLUDE_DIRS ${rqt_dyros_gui_INCLUDE_DIRECTORIES}
+# INCLUDE_DIRS ${dyros_bolt_gui_INCLUDE_DIRECTORIES}
   LIBRARIES ${PROJECT_NAME}
-  CATKIN_DEPENDS roscpp rqt_gui rqt_gui_cpp std_msgs
+  CATKIN_DEPENDS roscpp rqt_gui rqt_gui_cpp sensor_msgs std_msgs geometry_msgs dyros_bolt_msgs
 #  DEPENDS system_lib
 )
 
-set(dyros_gui_SRCS
-  src/dyros_gui.cpp
+
+
+set(dyros_bolt_gui_SRCS
+  src/dyros_bolt_gui.cpp
 )
 
-set(dyros_gui_HDRS
-  include/dyros_gui/dyros_gui.h
+set(dyros_bolt_gui_HDRS
+  include/dyros_bolt_gui/dyros_bolt_gui.h
 )
 
-set(dyros_gui_UIS
-  src/dyros_gui.ui
+set(dyros_bolt_gui_UIS
+  src/dyros_bolt_gui.ui
 )
 
-qt5_wrap_cpp(dyros_gui_MOCS ${dyros_gui_HDRS})
-qt5_wrap_ui(dyros_gui_UIS_H ${dyros_gui_UIS})
-
-include_directories(
-  include
-  ${CMAKE_CURRENT_BINARY_DIR}/..
-  ${catkin_INCLUDE_DIRS}
+set(qxtglobalshortcut
+  core/qxtglobal.cpp
+  gui/qxtwindowsystem.cpp
+  gui/qxtglobalshortcut.cpp
+  gui/qxtwindowsystem_x11.cpp
+  gui/qxtglobalshortcut_x11.cpp
 )
 
-add_library(${PROJECT_NAME}
-  ${dyros_gui_SRCS}
-  ${dyros_gui_MOCS}
-  ${dyros_gui_UIS_H}
-)
 
-target_link_libraries(${PROJECT_NAME}
-  ${catkin_LIBRARIES}
-  Qt5::Widgets
-)
+qt5_wrap_cpp(dyros_bolt_gui_MOCS ${dyros_bolt_gui_HDRS})
+qt5_wrap_ui(dyros_bolt_gui_UIS_H ${dyros_bolt_gui_UIS})
 
+
+###########
+## Build ##
+###########
+
+if($ENV{ROS_DISTRO} STREQUAL "melodic" OR $ENV{ROS_DISTRO} STREQUAL "noetic")
+  include_directories(
+    include
+    core
+    gui
+    ${Qt5Gui_PRIVATE_INCLUDE_DIRS}
+    ${CMAKE_CURRENT_BINARY_DIR}/..
+    ${catkin_INCLUDE_DIRS}
+  )
+
+  add_library(${PROJECT_NAME}
+    ${dyros_bolt_gui_SRCS}
+    ${dyros_bolt_gui_MOCS}
+    ${dyros_bolt_gui_UIS_H}
+    ${qxtglobalshortcut}
+  )
+
+  target_link_libraries(${PROJECT_NAME}
+    ${catkin_LIBRARIES}
+  )
+
+  target_link_libraries(${PROJECT_NAME} Qt5::Widgets Qt5::Core Qt5::Gui Qt5::X11Extras Qt5::GuiPrivate)
+
+elseif($ENV{ROS_DISTRO} STREQUAL "kinetic")
+  include_directories(
+    include
+    core
+    gui
+    ${CMAKE_CURRENT_BINARY_DIR}/..
+    ${catkin_INCLUDE_DIRS}
+  )
+
+  add_library(${PROJECT_NAME}
+    ${dyros_bolt_gui_SRCS}
+    ${dyros_bolt_gui_MOCS}
+    ${dyros_bolt_gui_UIS_H}
+  )
+
+  target_link_libraries(${PROJECT_NAME}
+    ${catkin_LIBRARIES}
+  )
+
+  target_link_libraries(${PROJECT_NAME} Qt5::Widgets Qt5::Core Qt5::Gui)
+endif()
+
+
+add_dependencies(${PROJECT_NAME} ${catkin_EXPORTED_TARGETS})
