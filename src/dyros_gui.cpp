@@ -27,6 +27,7 @@ void RqtDyrosPlugin::initPlugin(qt_gui_cpp::PluginContext& context)
 
     axis_state_pub = getNodeHandle().advertise<std_msgs::Int16>("/odrv_axis_request_states",10);
     joint_ctrl_pub = getNodeHandle().advertise<dyros_bolt_msgs::JointCommand>("/dyros_bolt/joint_command",10);
+    custom_ctrl_pub = getNodeHandle().advertise<dyros_bolt_msgs::CustomCommand>("/dyros_bolt/custom_command",10);
     axis_current_state_sub = getNodeHandle().subscribe("/odrv_axis_current_states", 10, &RqtDyrosPlugin::axisStateCallback, this);
     joint_state_sub = getNodeHandle().subscribe("/joint_states", 10, &RqtDyrosPlugin::jointStateCallback, this);
 
@@ -38,6 +39,7 @@ void RqtDyrosPlugin::initPlugin(qt_gui_cpp::PluginContext& context)
     connect(ui_.EstopButton,SIGNAL(clicked()),this,SLOT(estopbutton()));
     connect(ui_.RebootBT,SIGNAL(clicked()),this,SLOT(rebootbutton()));
     connect(ui_.resetEncoderButton,SIGNAL(clicked()),this,SLOT(encoderbutton()));
+    connect(ui_.CcCmdButton,SIGNAL(clicked()),this,SLOT(ccCmdbutton()));
     
     
 
@@ -66,6 +68,18 @@ void RqtDyrosPlugin::initPlugin(qt_gui_cpp::PluginContext& context)
 void RqtDyrosPlugin::estopbutton()
 {
     
+}
+void RqtDyrosPlugin::ccCmdbutton()
+{
+    if(ui_.custom_start->isChecked())
+    {
+        custom_cmd_msgs.custom_mode = 1;
+    }
+    if(ui_.custom_stop->isChecked())
+    {
+        custom_cmd_msgs.custom_mode = 0;
+    }
+    custom_ctrl_pub.publish(custom_cmd_msgs);
 }
 
 void RqtDyrosPlugin::encoderbutton()

@@ -10,39 +10,19 @@
     <height>720</height>
    </rect>
   </property>
+  <property name="sizePolicy">
+   <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+    <horstretch>0</horstretch>
+    <verstretch>0</verstretch>
+   </sizepolicy>
+  </property>
   <property name="windowTitle">
    <string>DyrosGui</string>
   </property>
-  <widget class="QPushButton" name="caliButton">
-   <property name="geometry">
-    <rect>
-     <x>80</x>
-     <y>130</y>
-     <width>160</width>
-     <height>40</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>Start Calibration</string>
-   </property>
-  </widget>
-  <widget class="QPushButton" name="CLButton">
-   <property name="geometry">
-    <rect>
-     <x>80</x>
-     <y>180</y>
-     <width>160</width>
-     <height>40</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>Torque On</string>
-   </property>
-  </widget>
   <widget class="QWidget" name="verticalLayoutWidget">
    <property name="geometry">
     <rect>
-     <x>330</x>
+     <x>600</x>
      <y>130</y>
      <width>343</width>
      <height>471</height>
@@ -216,7 +196,7 @@
   <widget class="QWidget" name="verticalLayoutWidget_2">
    <property name="geometry">
     <rect>
-     <x>710</x>
+     <x>960</x>
      <y>130</y>
      <width>281</width>
      <height>471</height>
@@ -393,38 +373,10 @@
     </item>
    </layout>
   </widget>
-  <widget class="QPushButton" name="idlestateButton">
-   <property name="geometry">
-    <rect>
-     <x>80</x>
-     <y>230</y>
-     <width>160</width>
-     <height>40</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>Torque Off</string>
-   </property>
-  </widget>
-  <widget class="QPushButton" name="mcalibrationButton">
-   <property name="geometry">
-    <rect>
-     <x>10</x>
-     <y>650</y>
-     <width>90</width>
-     <height>60</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>Motor
-
- Calibration</string>
-   </property>
-  </widget>
   <widget class="QPushButton" name="EstopButton">
    <property name="geometry">
     <rect>
-     <x>330</x>
+     <x>600</x>
      <y>20</y>
      <width>120</width>
      <height>80</height>
@@ -446,10 +398,10 @@
   <widget class="QPushButton" name="RebootBT">
    <property name="geometry">
     <rect>
-     <x>470</x>
+     <x>730</x>
      <y>20</y>
-     <width>111</width>
-     <height>81</height>
+     <width>120</width>
+     <height>80</height>
     </rect>
    </property>
    <property name="font">
@@ -462,18 +414,145 @@
 Odrive</string>
    </property>
   </widget>
-  <widget class="QPushButton" name="resetEncoderButton">
+  <widget class="QTabWidget" name="tabWidget">
    <property name="geometry">
     <rect>
-     <x>80</x>
-     <y>280</y>
-     <width>160</width>
-     <height>40</height>
+     <x>10</x>
+     <y>10</y>
+     <width>580</width>
+     <height>700</height>
     </rect>
    </property>
-   <property name="text">
-    <string>Reset Encoder</string>
+   <property name="currentIndex">
+    <number>1</number>
    </property>
+   <widget class="QWidget" name="tab">
+    <attribute name="title">
+     <string>Real Robot</string>
+    </attribute>
+    <widget class="QPushButton" name="caliButton">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>50</y>
+       <width>160</width>
+       <height>40</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Start Calibration</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="CLButton">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>130</y>
+       <width>160</width>
+       <height>40</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Torque On</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="idlestateButton">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>170</y>
+       <width>160</width>
+       <height>40</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Torque Off</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="resetEncoderButton">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>90</y>
+       <width>160</width>
+       <height>40</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Reset Encoder</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="mcalibrationButton">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>10</y>
+       <width>160</width>
+       <height>40</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Motor Calibration</string>
+     </property>
+    </widget>
+   </widget>
+   <widget class="QWidget" name="tab_2">
+    <attribute name="title">
+     <string>Simulation</string>
+    </attribute>
+    <widget class="QGroupBox" name="groupBox">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>10</y>
+       <width>540</width>
+       <height>150</height>
+      </rect>
+     </property>
+     <property name="title">
+      <string>Custom Command</string>
+     </property>
+     <widget class="QPushButton" name="CcCmdButton">
+      <property name="geometry">
+       <rect>
+        <x>410</x>
+        <y>110</y>
+        <width>120</width>
+        <height>30</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Command Send</string>
+      </property>
+     </widget>
+     <widget class="QWidget" name="verticalLayoutWidget_3">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>30</y>
+        <width>61</width>
+        <height>41</height>
+       </rect>
+      </property>
+      <layout class="QVBoxLayout" name="verticalLayout_3">
+       <item>
+        <widget class="QRadioButton" name="custom_start">
+         <property name="text">
+          <string>Start</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QRadioButton" name="custom_stop">
+         <property name="text">
+          <string>Stop</string>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+    </widget>
+   </widget>
   </widget>
  </widget>
  <resources/>

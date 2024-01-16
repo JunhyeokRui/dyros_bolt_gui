@@ -10,6 +10,7 @@
 #include <std_msgs/Int16MultiArray.h>
 #include <sensor_msgs/JointState.h>
 #include <dyros_bolt_msgs/JointCommand.h>
+#include <dyros_bolt_msgs/CustomCommand.h>
 #include <iostream>
 #include <ros/ros.h>
 
@@ -28,12 +29,14 @@ public:
 
     ros::Publisher axis_state_pub;
     ros::Publisher joint_ctrl_pub;
+    ros::Publisher custom_ctrl_pub;
 
     ros::Subscriber axis_current_state_sub;
     ros::Subscriber joint_state_sub;
     
     std_msgs::Int16 axis_state_msgs;
     dyros_bolt_msgs::JointCommand joint_cmd_msgs;
+    dyros_bolt_msgs::CustomCommand custom_cmd_msgs;
 
     const char* jointName[8] = {"FL_HAA", "FL_HFE", "FL_KFE", "FL_ANKLE", "FR_HAA", "FR_HFE", "FR_KFE", "FR_ANKLE"};
 
@@ -50,6 +53,7 @@ protected slots:
     virtual void rebootbutton();
     virtual void encoderbutton();
     virtual void jointCommandClicked();
+    virtual void ccCmdbutton();
     // virtual void tqbutton1();
     // virtual void tqbutton2();
     // virtual void tqbutton3();
