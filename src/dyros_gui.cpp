@@ -74,6 +74,15 @@ void RqtDyrosPlugin::ccCmdbutton()
     if(ui_.custom_start->isChecked())
     {
         custom_cmd_msgs.custom_mode = 1;
+        custom_cmd_msgs.first_foot_step = ui_.isRightFootStep->isChecked();
+        
+        custom_cmd_msgs.x=ui_.direction_x->value();
+        custom_cmd_msgs.y=ui_.direction_y->value();
+        custom_cmd_msgs.z=ui_.direction_z->value();
+        custom_cmd_msgs.theta=ui_.direction_theta->value();
+
+        custom_cmd_msgs.step_length_x = ui_.step_length_x->value();
+        custom_cmd_msgs.step_length_y = ui_.step_length_y->value();
     }
     if(ui_.custom_stop->isChecked())
     {
