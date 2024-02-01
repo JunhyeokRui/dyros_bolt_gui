@@ -4,6 +4,7 @@
 #include <rqt_gui_cpp/plugin.h>
 #include <dyros_bolt_gui/ui_dyros_gui.h>
 #include <QWidget>
+#include <QKeyEvent>
 #include <std_msgs/Float64.h>
 #include <std_msgs/Bool.h>
 #include <std_msgs/Int16.h>

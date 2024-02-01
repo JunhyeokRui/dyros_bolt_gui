@@ -31,6 +31,7 @@ void RqtDyrosPlugin::initPlugin(qt_gui_cpp::PluginContext& context)
     axis_current_state_sub = getNodeHandle().subscribe("/odrv_axis_current_states", 10, &RqtDyrosPlugin::axisStateCallback, this);
     joint_state_sub = getNodeHandle().subscribe("/joint_states", 10, &RqtDyrosPlugin::jointStateCallback, this);
 
+    ui_.RebootBT->setShortcut(QKeySequence(Qt::Key_E));
 
     connect(ui_.idlestateButton,SIGNAL(clicked()),this,SLOT(idlebutton()));
     connect(ui_.mcalibrationButton,SIGNAL(clicked()),this,SLOT(motorcalibutton()));
