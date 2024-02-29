@@ -41,6 +41,7 @@ void RqtDyrosPlugin::initPlugin(qt_gui_cpp::PluginContext& context)
     connect(ui_.RebootBT,SIGNAL(clicked()),this,SLOT(rebootbutton()));
     connect(ui_.resetEncoderButton,SIGNAL(clicked()),this,SLOT(encoderbutton()));
     connect(ui_.CcCmdButton,SIGNAL(clicked()),this,SLOT(ccCmdbutton()));
+    connect(ui_.gravButton,SIGNAL(clicked()),this,SLOT(gravCmdbutton()));
     
     
 
@@ -67,6 +68,10 @@ void RqtDyrosPlugin::initPlugin(qt_gui_cpp::PluginContext& context)
 }
 
 void RqtDyrosPlugin::estopbutton()
+{
+    
+}
+void RqtDyrosPlugin::gravCmdbutton()
 {
     
 }

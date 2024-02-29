@@ -55,6 +55,7 @@ protected slots:
     virtual void encoderbutton();
     virtual void jointCommandClicked();
     virtual void ccCmdbutton();
+    virtual void gravCmdbutton();
     // virtual void tqbutton1();
     // virtual void tqbutton2();
     // virtual void tqbutton3();

@@ -424,7 +424,7 @@ Odrive</string>
     </rect>
    </property>
    <property name="currentIndex">
-    <number>1</number>
+    <number>0</number>
    </property>
    <widget class="QWidget" name="tab">
     <attribute name="title">
@@ -493,6 +493,19 @@ Odrive</string>
      </property>
      <property name="text">
       <string>Motor Calibration</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="gravButton">
+     <property name="geometry">
+      <rect>
+       <x>400</x>
+       <y>10</y>
+       <width>160</width>
+       <height>40</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Gravity Control</string>
      </property>
     </widget>
    </widget>
@@ -641,7 +654,7 @@ Odrive</string>
         <rect>
          <x>140</x>
          <y>60</y>
-         <width>122</width>
+         <width>126</width>
          <height>71</height>
         </rect>
        </property>
