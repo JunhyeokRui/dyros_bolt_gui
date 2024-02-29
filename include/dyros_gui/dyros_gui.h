@@ -2,7 +2,7 @@
 #define dyros_gui__RqtDyrosPlugin_H
 
 #include <rqt_gui_cpp/plugin.h>
-#include <dyros_bolt_gui/ui_dyros_gui.h>
+#include <dyros_gui/ui_dyros_gui.h>
 #include <QWidget>
 #include <QKeyEvent>
 #include <std_msgs/Float64.h>
