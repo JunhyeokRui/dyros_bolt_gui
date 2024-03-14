@@ -463,6 +463,15 @@ void MyQGraphicsScene::mousePressEvent(QGraphicsSceneMouseEvent *event)
         connect(ui_.imuresetbtn, SIGNAL(pressed()), signalMapper, SLOT(map()));
         signalMapper->setMapping(ui_.imuresetbtn, "imureset");
 
+        connect(ui_.encoderresetbtn, SIGNAL(pressed()), signalMapper, SLOT(map()));
+        signalMapper->setMapping(ui_.encoderresetbtn, "encoderreset");
+
+        connect(ui_.encodercalibbtn, SIGNAL(pressed()), signalMapper, SLOT(map()));
+        signalMapper->setMapping(ui_.encodercalibbtn, "encodercalib");
+
+        connect(ui_.motorcalibbtn, SIGNAL(pressed()), signalMapper, SLOT(map()));
+        signalMapper->setMapping(ui_.motorcalibbtn, "motorcalib");
+
         connect(ui_.sebyftbtn, SIGNAL(pressed()), signalMapper, SLOT(map()));
         signalMapper->setMapping(ui_.sebyftbtn, "sebyft");
 
